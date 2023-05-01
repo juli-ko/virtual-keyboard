@@ -3,11 +3,12 @@ class Keyboard {
   elements = {
     main: null,
     keyboardContainer: null,
-    keys: [],
+    keyboardKeys: null,
   };
   properties = {
     value: "",
     capsLock: false,
+    lang: "eng",
   };
   //create Keyboard to DOM
   init() {
@@ -25,14 +26,13 @@ class Keyboard {
     this.elements.keyboardContainer.classList.add("keyboard-keys");
     this.elements.keyboardContainer.append(this.createKeys());
     document.querySelector(".keyboard").append(this.elements.keyboardContainer);
+    //collect the buttons
+    this.elements.keyboardKeys = document.querySelectorAll(".keyboard__key");
   }
   //create Keys for Keyboard
   createKeys() {
     const fragment = document.createDocumentFragment();
     const keyboardLayoutKeys = buttonsList;
-
-    let lang = "eng";
-    let shift = false;
 
     keyboardLayoutKeys.forEach((key) => {
       const keyElement = document.createElement("button");
@@ -40,7 +40,8 @@ class Keyboard {
       keyElement.classList.add("keyboard__key");
       keyElement.textContent = key.eng.low;
       fragment.append(keyElement);
-      
+
+      //button with some function
       switch (key.codeName) {
         case "Backspace":
           fragment.appendChild(document.createElement("br"));
@@ -61,7 +62,7 @@ class Keyboard {
         case "CapsLock":
           keyElement.classList.add("keyboard__caps");
           keyElement.addEventListener("click", () => {
-            switchToCapsLock();
+            this.switchCapsLock();
           });
           break;
         case "Enter":
@@ -74,7 +75,7 @@ class Keyboard {
         case "ShiftLeft":
           keyElement.classList.add("keyboard__shift-left");
           keyElement.addEventListener("click", () => {
-            switchToShift();
+            this.switchToShift();
           });
           break;
         case "ShiftRight":
@@ -86,11 +87,38 @@ class Keyboard {
           break;
         case "Space":
           keyElement.classList.add("keyboard__space");
+          keyElement.addEventListener("click", () => {
+            this.properties.value += " ";
+          });
           break;
+        case "Win": break;
+        case "AltRight": break;
+        case "AltLeft": break;
+        case "ControlRight": break; 
+        case "ControlLeft": break; 
+        //дописать остальные кнопки
+        //в дефолте определять shift, caps и язык
+        default:
+          keyElement.classList.add("keyboard__usual");
+          keyElement.addEventListener("click", () => {
+            this.properties.value += keyElement.textContent;
+            console.log(this.properties);
+          });
       }
-      });
+    });
 
     return fragment;
+  }
+  switchCapsLock() {
+    this.properties.capsLock = !this.properties.capsLock;
+
+    for (const key of this.elements.keyboardKeys) {
+      if (key.classList.contains("keyboard__usual")){
+        key.textContent = this.properties.capsLock
+          ? key.textContent.toUpperCase()
+          : key.textContent.toLowerCase();
+      }
+    }
   }
 };
 
@@ -99,4 +127,3 @@ class Keyboard {
 window.addEventListener("DOMContentLoaded", function () {
   new Keyboard().init();
 });
-console.log(buttonsList)
