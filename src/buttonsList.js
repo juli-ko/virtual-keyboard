@@ -495,7 +495,7 @@ const buttonsList = [
     },
   },
   {
-    codeName: 'KeyС',
+    codeName: 'KeyC',
     eng: {
       low: 'с',
       up: 'С',
