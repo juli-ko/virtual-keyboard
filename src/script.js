@@ -29,13 +29,11 @@ class Keyboard {
         <textarea class='use-keyboard' name='' id='' cols='30' rows='10'></textarea>\n
         <p class='description'>Для переключения языка используйте левыe Ctrl + Alt</p>`;
 
-    // create keyboard container
     this.elements.keyboardContainer = document.createElement('div');
     this.elements.keyboardContainer.classList.add('keyboard-keys');
     document.querySelector('.keyboard').append(this.elements.keyboardContainer);
     this.checkLang();
     this.createKeys();
-    // collect the buttons
     this.elements.keyboardKeys = document.querySelectorAll('.keyboard__key');
   }
 
@@ -56,7 +54,7 @@ class Keyboard {
       keyElement.innerHTML = key[lng][height];
       fragment.append(keyElement);
 
-      // button with some function
+      // buttons with some function
       switch (key.codeName) {
         case 'Backspace':
           fragment.appendChild(document.createElement('br'));
@@ -131,8 +129,6 @@ class Keyboard {
             } else this.ctrlClick = !this.ctrlClick;
           });
           break;
-        // дописать остальные кнопки
-        // в дефолте определять shift, caps и язык
         default:
           keyElement.classList.add('keyboard__usual');
           keyElement.addEventListener('click', () => {
@@ -165,7 +161,6 @@ class Keyboard {
   }
 
   checkLang() {
-    // eslint-disable-next-line no-undef
     if (localStorage.getItem('langForKeyboard')) {
       this.properties.lang = localStorage.getItem('langForKeyboard');
     } else {
@@ -175,7 +170,6 @@ class Keyboard {
 
   langСhange() {
     this.properties.lang = (this.properties.lang === 'eng') ? 'ru' : 'eng';
-    // eslint-disable-next-line no-undef
     localStorage.setItem('langForKeyboard', this.properties.lang);
     this.createKeys();
   }
