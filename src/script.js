@@ -92,11 +92,17 @@ class Keyboard {
           keyElement.addEventListener('click', () => {
             this.switchToShift();
           });
+          keyElement.addEventListener('keyup', () => {
+            this.switchToShift();
+          });
           break;
         case 'ShiftRight':
           fragment.appendChild(document.createElement('br'));
           keyElement.classList.add('keyboard__shift-right');
           keyElement.addEventListener('click', () => {
+            this.switchToShift();
+          });
+          keyElement.addEventListener('keyup', () => {
             this.switchToShift();
           });
           break;
@@ -171,6 +177,11 @@ class Keyboard {
   langСhange() {
     this.properties.lang = (this.properties.lang === 'eng') ? 'ru' : 'eng';
     localStorage.setItem('langForKeyboard', this.properties.lang);
+    this.createKeys();
+  }
+
+  switchToShift() {
+    this.properties.shift = (this.properties.shift === 'low') ? 'up' : 'low';
     this.createKeys();
   }
 }
