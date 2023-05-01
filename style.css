@@ -2,8 +2,8 @@
   margin: auto;
   display: flex;
   flex-direction: column;
-  width: 1000px;
-  max-width: 80%;
+  width: 850px;
+  max-width: 90%;
 }
 
 .keyboard-heading {
@@ -21,9 +21,9 @@
 }
 
 .keyboard__key {
-  width: 4%;
-  height: 40px;
-  margin: 4px;
+  min-width: 5.1%;
+  height: 45px;
+  margin: 5px;
   border-radius: 3px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
   border: none;
@@ -42,5 +42,22 @@
 }
 .keyboard__key:active{
   box-shadow: none;
-  background-color: #f3d369
+  background-color: #f3d369;
+  transition: 0.35s ease-in-out;
+}
+
+.keyboard__backspace,
+.keyboard__caps,
+.keyboard__shift-left{
+  min-width: 13.5%;
+}
+.keyboard__tab{
+  min-width: 7%;
+}
+.keyboard__enter,
+.keyboard__shift-right{
+  min-width: 11.5%;
+}
+.keyboard__space{
+  min-width: 45%;
 }

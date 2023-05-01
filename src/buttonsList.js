@@ -253,39 +253,6 @@ const buttonsList = [
     },
   },
   {
-    codeName: 'KeyY',
-    eng: {
-      low: 'y',
-      up: 'Y',
-    },
-    ru: {
-      low: 'н',
-      up: 'Н',
-    },
-  },
-  {
-    codeName: 'KeyU',
-    eng: {
-      low: 'u',
-      up: 'U',
-    },
-    ru: {
-      low: 'г',
-      up: 'Г',
-    },
-  },
-  {
-    codeName: 'KeyI',
-    eng: {
-      low: 'i',
-      up: 'I',
-    },
-    ru: {
-      low: 'ш',
-      up: 'Ш',
-    },
-  },
-  {
     codeName: 'KeyO',
     eng: {
       low: 'o',
@@ -327,6 +294,17 @@ const buttonsList = [
     ru: {
       low: 'ъ',
       up: 'Ъ',
+    },
+  },
+  {
+    codeName: 'Backslash',
+    eng: {
+      low: '\\',
+      up: '|',
+    },
+    ru: {
+      low: '/',
+      up: '/',
     },
   },
   {
@@ -662,12 +640,12 @@ const buttonsList = [
   {
     codeName: 'Space',
     eng: {
-      low: '_',
-      up: '_',
+      low: '',
+      up: '',
     },
     ru: {
-      low: '_',
-      up: '_',
+      low: '',
+      up: '',
     },
   },
   {
