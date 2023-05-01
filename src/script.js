@@ -8,6 +8,7 @@ class Keyboard {
   properties = {
     value: "",
     capsLock: false,
+    shift: "low",
     lang: "eng",
   };
   //create Keyboard to DOM
@@ -32,6 +33,7 @@ class Keyboard {
   }
   //create Keys for Keyboard
   createKeys() {
+    console.log("create")
     const fragment = document.createDocumentFragment();
     const keyboardLayoutKeys = buttonsList;
 
@@ -40,7 +42,10 @@ class Keyboard {
       keyElement.setAttribute("type", "button");
       keyElement.setAttribute("id", key.codeName);
       keyElement.classList.add("keyboard__key");
-      keyElement.textContent = key.eng.low;
+    
+      let lang = this.properties.lang;
+      let height = this.properties.shift;
+      keyElement.innerHTML = key[lang][height];
       fragment.append(keyElement);
 
       //button with some function
@@ -134,6 +139,15 @@ class Keyboard {
       }
     }
   }
+  switchToShift() {
+    this.properties.shift === "low"
+      ? (this.properties.shift = "up")
+      : (this.properties.shift = "low");
+    this.rewriteKeysValue()
+  }
+  rewriteKeysValue(){
+    this.elements.keyboardContainer.append = this.createKeys();
+  }
 };
 
 
@@ -146,7 +160,9 @@ document.addEventListener("keydown", function (event) {
   let pressedKey = document.getElementById(event.code);
   pressedKey.click();
   pressedKey.classList.add("active");
-  setTimeout(function () {
-    pressedKey.classList.remove("active");
-  }, 500);
+});
+
+document.addEventListener("keyup", function (event) {
+  let pressedKey = document.getElementById(event.code);
+  pressedKey.classList.remove("active");
 });
