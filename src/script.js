@@ -28,6 +28,7 @@ class Keyboard {
     document.querySelector(".keyboard").append(this.elements.keyboardContainer);
     //collect the buttons
     this.elements.keyboardKeys = document.querySelectorAll(".keyboard__key");
+    //keyboard fills textarea
   }
   //create Keys for Keyboard
   createKeys() {
@@ -37,6 +38,7 @@ class Keyboard {
     keyboardLayoutKeys.forEach((key) => {
       const keyElement = document.createElement("button");
       keyElement.setAttribute("type", "button");
+      keyElement.setAttribute("id", key.codeName);
       keyElement.classList.add("keyboard__key");
       keyElement.textContent = key.eng.low;
       fragment.append(keyElement);
@@ -51,6 +53,7 @@ class Keyboard {
               0,
               this.properties.value.length - 1
             );
+            this.reloadTextArea();
           });
           break;
         case "Tab":
@@ -70,6 +73,7 @@ class Keyboard {
           keyElement.classList.add("keyboard__enter");
           keyElement.addEventListener("click", () => {
             this.properties.value += "\n";
+            this.reloadTextArea();
           });
           break;
         case "ShiftLeft":
@@ -82,26 +86,33 @@ class Keyboard {
           fragment.appendChild(document.createElement("br"));
           keyElement.classList.add("keyboard__shift-right");
           keyElement.addEventListener("click", () => {
-            switchToShift();
+            this.switchToShift();
           });
           break;
         case "Space":
           keyElement.classList.add("keyboard__space");
           keyElement.addEventListener("click", () => {
             this.properties.value += " ";
+            this.reloadTextArea();
           });
           break;
-        case "Win": break;
-        case "AltRight": break;
-        case "AltLeft": break;
-        case "ControlRight": break; 
-        case "ControlLeft": break; 
+        case "Win":
+          break;
+        case "AltRight":
+          break;
+        case "AltLeft":
+          break;
+        case "ControlRight":
+          break;
+        case "ControlLeft":
+          break;
         //дописать остальные кнопки
         //в дефолте определять shift, caps и язык
         default:
           keyElement.classList.add("keyboard__usual");
-          keyElement.addEventListener("click", () => {
+          keyElement.addEventListener("click", (event) => {
             this.properties.value += keyElement.textContent;
+            this.reloadTextArea();
             console.log(this.properties);
           });
       }
@@ -109,11 +120,14 @@ class Keyboard {
 
     return fragment;
   }
+  reloadTextArea() {
+    document.querySelector(".use-keyboard").textContent = this.properties.value;
+  }
   switchCapsLock() {
     this.properties.capsLock = !this.properties.capsLock;
 
     for (const key of this.elements.keyboardKeys) {
-      if (key.classList.contains("keyboard__usual")){
+      if (key.classList.contains("keyboard__usual")) {
         key.textContent = this.properties.capsLock
           ? key.textContent.toUpperCase()
           : key.textContent.toLowerCase();
@@ -126,4 +140,13 @@ class Keyboard {
 
 window.addEventListener("DOMContentLoaded", function () {
   new Keyboard().init();
+});
+
+document.addEventListener("keydown", function (event) {
+  let pressedKey = document.getElementById(event.code);
+  pressedKey.click();
+  pressedKey.classList.add("active");
+  setTimeout(function () {
+    pressedKey.classList.remove("active");
+  }, 500);
 });

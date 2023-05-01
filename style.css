@@ -40,7 +40,8 @@
 .keyboard__key:hover{
   box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.5);
 }
-.keyboard__key:active{
+.keyboard__key:active,
+.active{
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
   background-color: #f3d369;
   transition: 0.2s ease-in-out;
