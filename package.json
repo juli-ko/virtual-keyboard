@@ -22,5 +22,24 @@
   "devDependencies": {
     "eslint": "^8.39.0",
     "eslint-config-airbnb": "^19.0.4"
-  }
+  },
+  "eslintConfig": {
+    "globals": {
+        "document": true,
+        "window": true,
+        "localStorage": true
+    }
+  },
+  "rules": {
+   "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+   ]
+}
 }

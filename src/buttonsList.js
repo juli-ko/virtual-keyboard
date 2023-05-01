@@ -3,165 +3,165 @@ const buttonsList = [
     codeName: 'Backquote',
     eng: {
       low: '`',
-      shift: '~',
+      up: '~',
     },
     ru: {
       low: 'ё',
-      shift: 'Ё',
+      up: 'Ё',
     },
   },
   {
     codeName: 'Digit1',
     eng: {
       low: '1',
-      shift: '!',
+      up: '!',
     },
     ru: {
       low: '1',
-      shift: '!',
+      up: '!',
     },
   },
   {
     codeName: 'Digit2',
     eng: {
       low: '2',
-      shift: '@',
+      up: '@',
     },
     ru: {
       low: '2',
-      shift: '"',
+      up: '"',
     },
   },
   {
     codeName: 'Digit3',
     eng: {
       low: '3',
-      shift: '#',
+      up: '#',
     },
     ru: {
       low: '3',
-      shift: '№',
+      up: '№',
     },
   },
   {
     codeName: 'Digit4',
     eng: {
       low: '4',
-      shift: '$',
+      up: '$',
     },
     ru: {
       low: '4',
-      shift: ';',
+      up: ';',
     },
   },
   {
     codeName: 'Digit5',
     eng: {
       low: '5',
-      shift: '%',
+      up: '%',
     },
     ru: {
       low: '5',
-      shift: '%',
+      up: '%',
     },
   },
   {
     codeName: 'Digit6',
     eng: {
       low: '6',
-      shift: '^',
+      up: '^',
     },
     ru: {
       low: '6',
-      shift: ':',
+      up: ':',
     },
   },
   {
     codeName: 'Digit7',
     eng: {
       low: '7',
-      shift: '&',
+      up: '&',
     },
     ru: {
       low: '7',
-      shift: '?',
+      up: '?',
     },
   },
   {
     codeName: 'Digit8',
     eng: {
       low: '8',
-      shift: '*',
+      up: '*',
     },
     ru: {
       low: '8',
-      shift: '*',
+      up: '*',
     },
   },
   {
     codeName: 'Digit9',
     eng: {
       low: '9',
-      shift: '(',
+      up: '(',
     },
     ru: {
       low: '9',
-      shift: '(',
+      up: '(',
     },
   },
   {
     codeName: 'Digit0',
     eng: {
       low: '0',
-      shift: ')',
+      up: ')',
     },
     ru: {
       low: '0',
-      shift: ')',
+      up: ')',
     },
   },
   {
     codeName: 'Minus',
     eng: {
       low: '-',
-      shift: '_',
+      up: '_',
     },
     ru: {
       low: '-',
-      shift: '_',
+      up: '_',
     },
   },
   {
     codeName: 'Equal',
     eng: {
       low: '=',
-      shift: '+',
+      up: '+',
     },
     ru: {
       low: '=',
-      shift: '+',
+      up: '+',
     },
   },
   {
     codeName: 'Backspace',
     eng: {
       low: 'Backspace',
-      shift: 'Backspace',
+      up: 'Backspace',
     },
     ru: {
       low: 'Backspace',
-      shift: 'Backspace',
+      up: 'Backspace',
     },
   },
   {
     codeName: 'Tab',
     eng: {
       low: 'Tab',
-      shift: 'Tab',
+      up: 'Tab',
     },
     ru: {
       low: 'Tab',
-      shift: 'Tab',
+      up: 'Tab',
     },
   },
   {
@@ -495,7 +495,7 @@ const buttonsList = [
     },
   },
   {
-    codeName: 'KeyС',
+    codeName: 'KeyC',
     eng: {
       low: 'с',
       up: 'С',
